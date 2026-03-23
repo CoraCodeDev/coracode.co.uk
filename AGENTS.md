@@ -4,6 +4,17 @@
 
 This is the source code for coracode.co.uk - the public website for CoraCode.
 
+## Project Plan
+
+See the detailed **Project Plan** in Confluence for task ordering and dependencies:
+https://davek.atlassian.net/wiki/spaces/CCW/pages/12812568
+
+**Current phases:**
+- Phase 1: Foundation (CSS, layout, header, footer)
+- Phase 2: Core Pages (Home, Projects, Skills, Contact)
+- Phase 3: Infrastructure (CI/CD, Pages, Preview)
+- Phase 4: Launch (Domain, Go live)
+
 ## Tech Stack
 
 - **Static site** - Plain HTML/CSS/JS for simplicity
@@ -46,9 +57,7 @@ This is the source code for coracode.co.uk - the public website for CoraCode.
 All changes must go through a feature branch.
 
 ### 2. Create a branch for each task
-```bash
-git checkout -b feature/CCW-4-home-page
-```
+Use the Jira task number: `feature/CCW-12-css-variables`
 
 ### 3. Preview/Test Changes Locally
 Before creating a PR, test your changes:
@@ -65,16 +74,16 @@ python3 -m http.server 8000
 ```bash
 # After pushing your branch
 git fetch origin
-git checkout origin/feature/CCW-4-home-page
+git checkout origin/feature/CCW-12-css-variables
 # Open index.html in browser to test
 ```
 
 ### 4. Create a Pull Request
 ```bash
 git add .
-git commit -m "feat: add home page content"
-git push -u origin feature/CCW-4-home-page
-gh pr create --title "feat: add home page content" --body "Addresses CCW-4"
+git commit -m "feat: add CSS variables"
+git push -u origin feature/CCW-12-css-variables
+gh pr create --title "feat: add CSS variables" --body "Addresses CCW-12"
 ```
 
 ### 5. Review Process (REQUIRED)
@@ -146,5 +155,6 @@ description: "Short description"
 
 ## Related
 
-- Confluence: https://davek.atlassian.net/wiki/spaces/CCW
 - Jira: https://davek.atlassian.net/browse/CCW
+- Confluence: https://davek.atlassian.net/wiki/spaces/CCW
+- **Project Plan:** https://davek.atlassian.net/wiki/spaces/CCW/pages/12812568
