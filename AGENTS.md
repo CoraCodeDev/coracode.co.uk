@@ -50,9 +50,24 @@ All changes must go through a feature branch.
 git checkout -b feature/CCW-4-home-page
 ```
 
-### 3. Work on your changes
-- Test locally by opening index.html in browser
-- Or run a simple server: `python -m http.server`
+### 3. Preview/Test Changes Locally
+Before creating a PR, test your changes:
+
+**Option A: Open directly in browser**
+```bash
+# Just double-click index.html to open in browser
+# Or use a simple server:
+python3 -m http.server 8000
+# Then visit http://localhost:8000
+```
+
+**Option B: Pull the branch and test**
+```bash
+# After pushing your branch
+git fetch origin
+git checkout origin/feature/CCW-4-home-page
+# Open index.html in browser to test
+```
 
 ### 4. Create a Pull Request
 ```bash
@@ -64,7 +79,9 @@ gh pr create --title "feat: add home page content" --body "Addresses CCW-4"
 
 ### 5. Review Process (REQUIRED)
 - **NEVER review your own PRs**
-- Ask for review (you or user can review)
+- Request review in PR
+- Reviewer: pull branch locally and test in browser
+- Review the code diff in GitHub
 - Address feedback
 - Wait for approval before merging
 
@@ -73,9 +90,9 @@ gh pr create --title "feat: add home page content" --body "Addresses CCW-4"
 - Don't delete branch immediately (keep for reference)
 
 ### 7. Deployment
-- Site deploys automatically from main
-- BUT: GitHub Pages is currently disabled
-- **Don't enable without user approval**
+- Site deploys automatically from main (once enabled)
+- **GitHub Pages currently disabled**
+- **Never enable deployment without user approval**
 
 ---
 
