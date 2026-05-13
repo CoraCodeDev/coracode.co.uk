@@ -1,0 +1,86 @@
+---
+title: OpenClaw Session Viewer
+description: A lightweight, server-side session viewer for OpenClaw. Browse, search, and paginate through agent sessions.
+---
+
+<section class="hero">
+    <h1>OpenClaw Session Viewer</h1>
+    <p>A lightweight tool for browsing, searching, and reading OpenClaw agent session logs — fast, even for massive files.</p>
+</section>
+
+<section>
+    <div class="projects-grid">
+        <div class="project-card">
+            <span class="tag">Why it exists</span>
+            <h3>The Problem</h3>
+            <p>OpenClaw agent sessions can grow to 36MB+ of JSONL. Opening those files in a text editor or browser tab will crash your machine. The Session Viewer reads files server-side and paginates them — loading only 100 messages at a time.</p>
+        </div>
+        <div class="project-card">
+            <span class="tag">How it works</span>
+            <h3>The Solution</h3>
+            <p>A small Flask app that scans your OpenClaw agents directory, parses JSONL session files, and renders a clean conversation view. Server-side parsing means the browser never sees more than one page at a time.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section-title">
+        <h2>Features</h2>
+    </div>
+    <div class="pillars">
+        <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <h3>Fast</h3>
+            <p>Server-side parsing with configurable pagination. Even 36MB+ session files load instantly.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">🔍</div>
+            <h3>Search &amp; Filter</h3>
+            <p>Filter sessions by agent, search by session ID. Find what you're looking for quickly.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">📊</div>
+            <h3>Stats &amp; Metrics</h3>
+            <p>Per-agent session counts, message totals, tool call stats. Built-in Prometheus metrics endpoint.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">🔌</div>
+            <h3>JSON API</h3>
+            <p>Full REST API for programmatic access. Script session analysis or build your own tools on top.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">🐳</div>
+            <h3>Docker Ready</h3>
+            <p>Run directly with Python, as a systemd service, or in Docker. Mount your agents dir read-only.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">🎨</div>
+            <h3>Dark Theme UI</h3>
+            <p>Clean GitHub-dark inspired interface. Colour-coded messages: user, assistant, tool calls, results.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section-title">
+        <h2>Quick Start</h2>
+    </div>
+    <div style="max-width: 700px; margin: 0 auto;">
+        <div class="cta" style="text-align: left;">
+            <p style="font-family: monospace; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                git clone https://github.com/CoraCodeDev/oc-session-viewer.git<br>
+                cd oc-session-viewer<br>
+                pip install -r requirements.txt<br>
+                python app.py
+            </p>
+            <p style="color: var(--text-secondary);">Then open <a href="http://localhost:8888" style="color: var(--accent);">http://localhost:8888</a> in your browser.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Get the Source</h2>
+    <p>Free and open source under the MIT License.</p>
+    <a href="https://github.com/CoraCodeDev/oc-session-viewer" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+    <a href="https://github.com/CoraCodeDev/oc-session-viewer/releases" class="btn btn-outline" target="_blank" rel="noopener">Latest Release</a>
+</section>
