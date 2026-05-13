@@ -2,7 +2,7 @@
     <nav>
         <a href="/" class="logo">{{ site.title }}</a>
         <ul>
-            {% assign nav_items = "Home,Projects,Skills,Contact" | split: "," %}
+            {% assign nav_items = "Home,Projects,Skills,About,Contact" | split: "," %}
             {% for item in nav_items %}
             {% assign slug = item | downcase %}
             {% assign url = "/" %}

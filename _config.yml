@@ -21,3 +21,6 @@ defaults:
       path: ""
     values:
       layout: default
+
+# Analytics
+google_analytics: G-C9Z90396PV
