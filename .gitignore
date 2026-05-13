@@ -1,3 +1,13 @@
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby
+Gemfile.lock
+vendor/
+
 # Dependencies
 node_modules/
 
@@ -8,6 +18,3 @@ node_modules/
 # OS
 .DS_Store
 Thumbs.db
-
-# Build output (if any)
-dist/

@@ -1,0 +1,23 @@
+title: CoraCode
+description: Building software products, developer tools, and open source projects.
+url: "https://coracode.co.uk"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+
+# Exclude from processing
+exclude:
+  - README.md
+  - AGENTS.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
