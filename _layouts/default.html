@@ -9,9 +9,10 @@
     {% else %}
     <meta name="description" content="{{ site.description }}">
     {% endif %}
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="alternate icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/assets/css/style.css">
     {% if site.google_analytics %}
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -22,8 +23,9 @@
     {% endif %}
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     {% include header.html %}
-    <main>
+    <main id="main-content">
         {{ content }}
     </main>
     {% include footer.html %}

@@ -1,6 +1,13 @@
 <header>
     <nav>
-        <a href="/" class="logo">{{ site.title }}</a>
+        <a href="/" class="logo">
+            <img src="/assets/logo.svg" alt="{{ site.title }}" width="160" height="40">
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <ul>
             {% assign nav_items = "Home,Projects,Skills,About,Contact" | split: "," %}
             {% for item in nav_items %}
@@ -13,4 +20,11 @@
             {% endfor %}
         </ul>
     </nav>
+    <script>
+        document.querySelector('.nav-toggle')?.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            document.querySelector('nav ul').classList.toggle('open');
+        });
+    </script>
 </header>

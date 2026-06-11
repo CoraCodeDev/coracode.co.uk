@@ -25,9 +25,26 @@ body {
     min-height: 100vh;
 }
 
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg-primary);
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 header {
     padding: 1rem 2rem;
     border-bottom: 1px solid var(--bg-secondary);
+    position: relative;
 }
 
 nav {
@@ -39,10 +56,33 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--accent);
+    display: flex;
+    align-items: center;
     text-decoration: none;
+}
+
+.logo img {
+    display: block;
+    height: 40px;
+    width: auto;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    margin: 5px 0;
+    transition: transform 0.3s, opacity 0.3s;
+    border-radius: 1px;
 }
 
 nav ul {
@@ -117,8 +157,13 @@ main {
 }
 
 .pillar-icon {
-    font-size: 2rem;
     margin-bottom: 1rem;
+}
+
+.pillar-icon svg {
+    display: block;
+    width: 32px;
+    height: 32px;
 }
 
 .pillar h3 {
@@ -195,6 +240,32 @@ main {
     margin-bottom: 6rem;
 }
 
+.cta--narrow {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta--left {
+    text-align: left;
+}
+
+.cta__text {
+    color: var(--text-secondary);
+}
+
+.code-block {
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
 .cta h2 {
     font-size: 1.75rem;
     margin-bottom: 1rem;
@@ -224,12 +295,48 @@ main {
     background: transparent;
     border: 1px solid var(--accent);
     color: var(--accent);
-    margin-left: 1rem;
 }
 
 .btn-outline:hover {
     background: var(--accent);
     color: var(--bg-primary);
+}
+
+.contact-link {
+    color: var(--accent);
+    font-size: 1.25rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.contact-link:hover {
+    color: var(--accent-hover);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.error-page {
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.error-page h1 {
+    font-size: 6rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.error-page p {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
 }
 
 footer {
@@ -257,6 +364,31 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--bg-secondary);
+        padding: 0.5rem 2rem 1rem;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 0.5rem 0;
+    }
+
     .pillars {
         grid-template-columns: 1fr;
     }
@@ -265,16 +397,15 @@ footer {
         font-size: 2rem;
     }
 
-    nav ul {
-        gap: 1rem;
-    }
-
     .cta {
         padding: 3rem 1.5rem;
     }
 
+    .btn + .btn {
+        margin-top: 0.75rem;
+    }
+
     .btn-outline {
         margin-left: 0;
-        margin-top: 0.75rem;
     }
 }
