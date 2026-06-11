@@ -9,14 +9,18 @@
             <span></span>
         </button>
         <ul>
-            {% assign nav_items = "Home,Projects,Skills,About,Contact" | split: "," %}
+            {% assign nav_items = "Home,Projects,Skills,About,Blog,Contact" | split: "," %}
             {% for item in nav_items %}
             {% assign slug = item | downcase %}
+            {% if slug == "blog" %}
+            <li><a href="https://blog.coracode.co.uk">{{ item }}</a></li>
+            {% else %}
             {% assign url = "/" %}
             {% if slug != "home" %}
                 {% assign url = slug | append: ".html" %}
             {% endif %}
             <li><a href="{{ url }}"{% if page.url == url or (slug == "home" and page.url == "/") %} class="active"{% endif %}>{{ item }}</a></li>
+            {% endif %}
             {% endfor %}
         </ul>
     </nav>
