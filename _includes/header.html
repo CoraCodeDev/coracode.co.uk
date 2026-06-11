@@ -13,7 +13,7 @@
             {% for item in nav_items %}
             {% assign slug = item | downcase %}
             {% if slug == "blog" %}
-            <li><a href="https://blog.coracode.co.uk">{{ item }}</a></li>
+            <li><a href="https://blog.coracode.co.uk" target="_blank" rel="noopener">{{ item }}</a></li>
             {% else %}
             {% assign url = "/" %}
             {% if slug != "home" %}
