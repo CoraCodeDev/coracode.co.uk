@@ -95,19 +95,38 @@ description: CoraCode builds software products, developer tools, and open source
 (async function() {
     const grid = document.getElementById('blog-grid');
     try {
-        const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fblog.coracode.co.uk%2Frss.xml');
+        const query = JSON.stringify({ query: `{
+            publication(host: "blog.coracode.co.uk") {
+                posts(first: 3) {
+                    edges {
+                        node {
+                            title
+                            url
+                            publishedAt
+                            brief
+                        }
+                    }
+                }
+            }
+        }` });
+        const res = await fetch('https://gql.hashnode.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: query
+        });
         const data = await res.json();
-        if (data.status !== 'ok' || !data.items?.length) throw new Error('no items');
-        grid.innerHTML = data.items.slice(0, 3).map(item => `
-            <a href="${item.link}" class="blog-card" target="_blank" rel="noopener">
-                <span class="tag">${new Date(item.pubDate).toLocaleDateString('en-GB', {month:'short', day:'numeric', year:'numeric'})}</span>
-                <h3>${item.title}</h3>
-                <p>${item.description.replace(/<[^>]+>/g, '').slice(0, 150)}...</p>
+        const posts = data?.data?.publication?.posts?.edges;
+        if (!posts?.length) throw new Error('no posts');
+        grid.innerHTML = posts.map(({ node }) => `
+            <a href="${node.url}" class="blog-card" target="_blank">
+                <span class="tag">${new Date(node.publishedAt).toLocaleDateString('en-GB', {month:'short', day:'numeric', year:'numeric'})}</span>
+                <h3>${node.title}</h3>
+                <p>${node.brief.slice(0, 150)}...</p>
                 <span class="blog-read-more">Read on the blog →</span>
             </a>
         `).join('');
     } catch {
-        grid.innerHTML = '<p class="blog-loading">Could not load posts. <a href="https://blog.coracode.co.uk" target="_blank" rel="noopener" class="contact-link">Visit our blog →</a></p>';
+        grid.innerHTML = '<p class="blog-loading">Could not load posts. <a href="https://blog.coracode.co.uk" target="_blank" class="contact-link">Visit our blog →</a></p>';
     }
 })();
 </script>
