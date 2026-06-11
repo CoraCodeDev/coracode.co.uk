@@ -74,9 +74,40 @@ description: CoraCode builds software products, developer tools, and open source
     </div>
 </section>
 
+<section id="blog-posts">
+    <div class="section-title">
+        <h2>Latest from the Blog</h2>
+        <p>Thoughts, deep dives, and project updates</p>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+        <p class="blog-loading">Loading posts...</p>
+    </div>
+</section>
+
 <section class="cta">
     <h2>Want to work with us?</h2>
     <p>We're always open to interesting projects and collaborations.</p>
     <a href="/contact.html" class="btn">Get in Touch</a>
     <a href="https://github.com/CoraCodeDev" class="btn btn-outline" target="_blank" rel="noopener">Browse Our Work</a>
 </section>
+
+<script>
+(async function() {
+    const grid = document.getElementById('blog-grid');
+    try {
+        const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fblog.coracode.co.uk%2Frss.xml');
+        const data = await res.json();
+        if (data.status !== 'ok' || !data.items?.length) throw new Error('no items');
+        grid.innerHTML = data.items.slice(0, 3).map(item => `
+            <a href="${item.link}" class="blog-card" target="_blank" rel="noopener">
+                <span class="tag">${new Date(item.pubDate).toLocaleDateString('en-GB', {month:'short', day:'numeric', year:'numeric'})}</span>
+                <h3>${item.title}</h3>
+                <p>${item.description.replace(/<[^>]+>/g, '').slice(0, 150)}...</p>
+                <span class="blog-read-more">Read on the blog →</span>
+            </a>
+        `).join('');
+    } catch {
+        grid.innerHTML = '<p class="blog-loading">Could not load posts. <a href="https://blog.coracode.co.uk" target="_blank" rel="noopener" class="contact-link">Visit our blog →</a></p>';
+    }
+})();
+</script>
